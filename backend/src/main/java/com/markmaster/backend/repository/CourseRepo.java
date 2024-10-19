@@ -1,4 +1,8 @@
 package com.markmaster.backend.repository;
 
-public class CourseRepo {
+import com.markmaster.backend.models.Course;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CourseRepo extends AbstractBaseRepository<Course, Long> {
 }

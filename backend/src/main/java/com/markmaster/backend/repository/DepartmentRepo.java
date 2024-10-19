@@ -1,4 +1,6 @@
 package com.markmaster.backend.repository;
 
-public class DepartmentRepo {
+import com.markmaster.backend.models.Department;
+
+public interface DepartmentRepo extends AbstractBaseRepository<Department, Long> {
 }

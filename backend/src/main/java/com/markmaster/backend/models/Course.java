@@ -4,13 +4,30 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Course")
-public class Course {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+public class Course  extends AbstractBaseEntity{
+
     @Column(name = "course_name")
     private String courseName;
     @OneToOne(targetEntity = Department.class, cascade = CascadeType.REMOVE)
     private Department department;
+    @Column(name="course_full_name")
+    private String courseFullName;
 
+
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 }

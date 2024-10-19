@@ -1,7 +1,8 @@
 package com.markmaster.backend.repository;
 
 import com.markmaster.backend.models.Batch;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface BatchRepo extends JpaRepository<Batch, Integer> {
+@Repository
+public interface BatchRepo extends AbstractBaseRepository<Batch,Long> {
 }
