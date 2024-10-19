@@ -3,6 +3,7 @@ package com.markmaster.backend.models;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Student")
@@ -19,8 +20,10 @@ public class Student extends AbstractBaseEntity {
     private String rollNo;
     @Column(name = "dob")
     private Date dob;
-    @OneToOne(targetEntity = Batch.class, cascade = CascadeType.REMOVE)
+    @OneToOne(targetEntity = Batch.class, cascade = CascadeType.REMOVE, optional = true)
     private Batch batch;
+    @OneToMany(targetEntity = Course.class, cascade = CascadeType.REMOVE)
+    private List<Course> courses;
 
     public Student(String firstName, String lastName, int age) {
         this.firstName = firstName;
@@ -86,5 +89,13 @@ public class Student extends AbstractBaseEntity {
 
     public void setBatch(Batch batch) {
         this.batch = batch;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }

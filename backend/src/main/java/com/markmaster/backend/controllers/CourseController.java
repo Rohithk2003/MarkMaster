@@ -2,14 +2,16 @@ package com.markmaster.backend.controllers;
 
 import com.markmaster.backend.helpers.HttpResponseMessageHandler;
 import com.markmaster.backend.models.Course;
+import com.markmaster.backend.models.DTO.CourseDepartmentDTO;
+import com.markmaster.backend.models.Department;
 import com.markmaster.backend.service.Course.CourseService;
+import com.markmaster.backend.service.Department.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -17,12 +19,14 @@ import java.util.Optional;
 @RequestMapping("/api/course")
 public class CourseController {
     private final CourseService courseService;
+    private final DepartmentService departmentService;
     private final HttpResponseMessageHandler httpResponseUpdater;
 
     @Autowired
-    public CourseController(CourseService courseService, HttpResponseMessageHandler httpResponseUpdater) {
+    public CourseController(CourseService courseService, DepartmentService departmentService, HttpResponseMessageHandler httpResponseUpdater) {
         this.courseService = courseService;
         this.httpResponseUpdater = httpResponseUpdater;
+        this.departmentService = departmentService;
     }
 
     @GetMapping("/all")
@@ -40,21 +44,46 @@ public class CourseController {
     }
 
     @PostMapping("/")
-    Course create(@RequestBody Course course) throws HttpMessageNotReadableException {
-
-        courseService.save(course);
-        return course;
+    ResponseEntity<Map<String, Object>> create(@RequestBody CourseDepartmentDTO dto) throws HttpMessageNotReadableException {
+        System.out.println(dto.toString());
+        Course course = dto.getCourse();
+        Department department = dto.getDepartment();
+        if (department == null) {
+            return httpResponseUpdater.updateHttpResponse("Department not found", HttpStatus.NOT_FOUND);
+        }
+        if (course == null) {
+            return httpResponseUpdater.updateHttpResponse("Course not found", HttpStatus.NOT_FOUND);
+        }
+        Optional<Department> departmentOptional = Optional.ofNullable(departmentService.findById(department.getId()));
+        if (departmentOptional.isPresent()) {
+            course.setDepartment(department);
+            courseService.save(course);
+            System.out.println(department.getDepartmentName());
+            return httpResponseUpdater.updateHttpResponse("Course with has been created successfully", HttpStatus.OK);
+        }
+        return httpResponseUpdater.updateHttpResponse("Department not found", HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> update(@PathVariable Long id, @RequestBody Course course) {
+    public ResponseEntity<Map<String, Object>> update(@PathVariable Long id, @RequestBody CourseDepartmentDTO dto) {
         Optional<Course> courseOptional = Optional.ofNullable(courseService.findById(id));
+
         if (courseOptional.isPresent()) {
+            Course course = dto.getCourse();
+            Department department = dto.getDepartment();
+
             courseService.updateById(course, id);
-            return httpResponseUpdater.updateHttpResponse("Course with id:" + id + " has been updated successfully", HttpStatus.OK);
+
+            if (department != null) {
+                courseService.updateParentDepartment(course.getId(), department);
+            }
+
+            return httpResponseUpdater.updateHttpResponse("Course with id: " + id + " has been updated successfully", HttpStatus.OK);
         }
-        return httpResponseUpdater.updateHttpResponse("Course with id:" + id + " not found", HttpStatus.NOT_FOUND);
+
+        return httpResponseUpdater.updateHttpResponse("Course with id: " + id + " not found", HttpStatus.NOT_FOUND);
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable Long id) {
@@ -65,4 +94,5 @@ public class CourseController {
         }
         return httpResponseUpdater.updateHttpResponse("Course with id:" + id + " not found", HttpStatus.NOT_FOUND);
     }
+
 }

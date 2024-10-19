@@ -4,15 +4,14 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Course")
-public class Course  extends AbstractBaseEntity{
+public class Course extends AbstractBaseEntity {
 
     @Column(name = "course_name")
     private String courseName;
-    @OneToOne(targetEntity = Department.class, cascade = CascadeType.REMOVE)
+    @OneToOne(targetEntity = Department.class, cascade = CascadeType.REMOVE, optional = true)
     private Department department;
-    @Column(name="course_full_name")
+    @Column(name = "course_full_name")
     private String courseFullName;
-
 
 
     public String getCourseName() {
@@ -29,5 +28,14 @@ public class Course  extends AbstractBaseEntity{
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+
+    public String getCourseFullName() {
+        return courseFullName;
+    }
+
+    public void setCourseFullName(String courseFullName) {
+        this.courseFullName = courseFullName;
     }
 }

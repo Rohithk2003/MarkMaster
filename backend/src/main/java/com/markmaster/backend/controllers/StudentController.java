@@ -1,7 +1,8 @@
 package com.markmaster.backend.controllers;
 
 import com.markmaster.backend.helpers.HttpResponseMessageHandler;
-import com.markmaster.backend.models.Student;
+import com.markmaster.backend.models.*;
+import com.markmaster.backend.models.DTO.StudentCourseBatchDTO;
 import com.markmaster.backend.service.Student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,16 +41,29 @@ public class StudentController {
     }
 
     @PostMapping("/")
-    Student create(@RequestBody Student student) throws HttpMessageNotReadableException {
-
-        studentService.save(student);
-        return student;
+    ResponseEntity<Map<String, Object>> create(@RequestBody StudentCourseBatchDTO dto) throws HttpMessageNotReadableException {
+        Student studentNew = dto.getStudent();
+        List<Course> course = dto.getCourses();
+        Batch batch = dto.getBatches();
+        if (studentNew == null) {
+            return httpResponseUpdater.updateHttpResponse("Student details cannot be empty", HttpStatus.NOT_FOUND);
+        }
+        studentNew.setBatch(batch);
+        studentNew.setCourses(course);
+        studentService.save(studentNew);
+        return httpResponseUpdater.updateHttpResponse("Success", HttpStatus.OK, studentNew);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Map<String, Object>> update(@PathVariable Long id, @RequestBody Student student) {
+    public ResponseEntity<Map<String, Object>> update(@PathVariable Long id, @RequestBody StudentCourseBatchDTO dto) {
         Optional<Student> studentOptional = Optional.ofNullable(studentService.findById(id));
         if (studentOptional.isPresent()) {
+            Student student = dto.getStudent();
+            List<Course> course = dto.getCourses();
+            Batch batch = dto.getBatches();
+            student.setBatch(batch);
+            student.setCourses(course);
+            studentService.save(student);
             studentService.updateById(student, id);
             return httpResponseUpdater.updateHttpResponse("Student with id:" + id + " has been updated successfully", HttpStatus.OK);
         }
