@@ -15,7 +15,7 @@ public class Faculty extends AbstractBaseEntity {
 
     @OneToMany(targetEntity = Batch.class, cascade = CascadeType.REMOVE)
     private List<Batch> batches;
-    @OneToOne(targetEntity = Department.class, optional = true, cascade = CascadeType.REMOVE)
+    @ManyToOne(targetEntity = Department.class, optional = true, cascade = CascadeType.REMOVE)
     private Department department;
 
     public String getFacultyName() {

@@ -8,7 +8,7 @@ public class Course extends AbstractBaseEntity {
 
     @Column(name = "course_name")
     private String courseName;
-    @OneToOne(targetEntity = Department.class, cascade = CascadeType.REMOVE, optional = true)
+    @ManyToOne(targetEntity = Department.class, cascade = CascadeType.REMOVE, optional = true)
     private Department department;
     @Column(name = "course_full_name")
     private String courseFullName;

@@ -1,40 +1,70 @@
-<div class="flex z-20 relative  min-h-[100dvh]  justify-center items-center bg-black flex-col px-6 py-12 lg:px-8">
-  <div class="relative rounded-xl min-h-[35rem] mt-20 w-full flex justify-center max-w-lg items-center overflow-hidden">
+<div
+  class="flex z-20 relative min-h-[100dvh] justify-center items-center bg-[#121212] flex-col px-6 py-12 lg:px-8"
+>
+  <div
+    class="relative rounded-xl min-h-[35rem] mt-20 w-full flex justify-center max-w-lg items-center overflow-hidden"
+  >
     <span
-      class="absolute inset-[-1000%] animate-[spin_5s_linear_infinite_reverse] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#fff_0%,#09090B_7%)] bg-[conic-gradient(from_90deg_at_50%_50%,#000_0%,#fff_5%)] group-hover:bg-none"></span>
+      class="absolute inset-[-1000%] animate-[spin_5s_linear_infinite_reverse] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#fff_0%,#09090B_7%)] bg-[conic-gradient(from_90deg_at_50%_50%,#000_0%,#fff_5%)] group-hover:bg-none"
+    ></span>
     <div class="p-1 w-full h-full">
-      <div class="border relative z-20 bg-black  rounded-xl  p-10 w-full">
+      <div class="border relative z-20 bg-[#121212] rounded-xl p-10 w-full">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
           <div class="flex flex-row items-center justify-center">
-            <img ngSrc="/logo.png" alt="" width="100" height="100">
+            <img ngSrc="/logo.png" alt="" width="100" height="100" />
             <h2 class="font-bold text-white text-4xl">MarkMaster</h2>
           </div>
-          <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-100">Sign in to your
-            account</h2>
+          <h2
+            class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-100"
+          >
+            Sign in to your account
+          </h2>
         </div>
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form class="space-y-6" action="#" method="POST">
             <div>
-              <label for="email" class="block text-sm font-medium leading-6 text-gray-100">Email address</label>
+              <label
+                for="email"
+                class="block text-sm font-medium leading-6 text-gray-100"
+                >Email address</label
+              >
               <div class="mt-2">
-                <input id="email" name="email" type="email" autocomplete="email" required
-                       class="block w-full rounded-md text-xl text-black border-0 py-1.5 pl-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  class="block w-full rounded-md text-xl text-black border-0 py-1.5 pl-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
               </div>
             </div>
 
             <div>
               <div class="flex items-center justify-between">
-                <label for="password" class="block text-sm font-medium leading-6 text-gray-100">Password</label>
+                <label
+                  for="password"
+                  class="block text-sm font-medium leading-6 text-gray-100"
+                  >Password</label
+                >
               </div>
               <div class="mt-2">
-                <input id="password" name="password" type="password" autocomplete="current-password" required
-                       class="block w-full rounded-md border-0 py-1.5 text-black pl-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  required
+                  class="block w-full rounded-md border-0 py-1.5 text-black pl-4 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
               </div>
             </div>
 
             <div>
-              <button type="submit"
-                      class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              <button
+                type="submit"
+                class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
                 Sign in
               </button>
             </div>
@@ -42,7 +72,11 @@
 
           <p class="mt-10 text-center text-sm text-gray-500">
             Not a member?
-            <a href="/sign-up" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign Up</a>
+            <a
+              href="/sign-up"
+              class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+              >Sign Up</a
+            >
           </p>
         </div>
       </div>

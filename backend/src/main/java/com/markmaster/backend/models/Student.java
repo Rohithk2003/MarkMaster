@@ -20,11 +20,10 @@ public class Student extends AbstractBaseEntity {
     private String rollNo;
     @Column(name = "dob")
     private Date dob;
-    @OneToOne(targetEntity = Batch.class, cascade = CascadeType.REMOVE, optional = true)
+    @ManyToOne(targetEntity = Batch.class, cascade = CascadeType.REMOVE, optional = true)
     private Batch batch;
-    @OneToMany(targetEntity = Course.class, cascade = CascadeType.REMOVE)
+    @ManyToMany(targetEntity = Course.class)
     private List<Course> courses;
-
     public Student(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;

@@ -1,33 +1,49 @@
-<header class="flex bg-transparent absolute z-40 w-full justify-center items-center p-7">
+<header
+  class="flex bg-transparent absolute z-40 w-full justify-center items-center p-7"
+>
   <nav
-    class="flex px-0 p-4 h-14 w-full border-zinc-900 backdrop-blur border-2 rethink-sans flex-row text-primary-foreground max-w-5xl bg-black rounded-full justify-between items-center">
+    class="flex px-0 p-4 h-14 w-full border-zinc-900 backdrop-blur border-2 rethink-sans flex-row text-primary-foreground max-w-5xl bg-[#121212] rounded-full justify-between items-center"
+  >
     <a class="hover:cursor-pointer w-max" href="/">
-      <div class="flex flex-row items-center  justify-center">
-        <img alt="" height="40" ngSrc="/logo.png" width="40">
-        <p class="font-bold text-2xl ">MarkMaster</p>
+      <div class="flex flex-row items-center justify-center">
+        <img alt="" height="40" ngSrc="/logo.png" width="40" />
+        <p class="font-bold !text-white text-2xl">MarkMaster</p>
       </div>
     </a>
     <ul class="flex flex-row mr-6 gap-5 font-bold">
-
       <li *ngFor="let nav of navOptions" class="relative one">
-        <a href="{{nav.href}}">
+        <a href="{{ nav.href }}">
           <p>{{ nav.text }}</p>
-          <span CLASS="absolute -bottom-1 left-0 w-0 transition-all h-px bg-secondary"></span></a>
+          <span
+            CLASS="absolute -bottom-1 left-0 w-0 transition-all h-px bg-secondary"
+          ></span
+        ></a>
       </li>
     </ul>
     <div
-
-      class="relative overflow-hidden rounded-full dark:bg-zinc-900 bg-white shadow border dark:border-zinc-800 group border-zinc-400 p-0.5">
+      class="relative overflow-hidden rounded-full dark:bg-zinc-900 bg-white shadow border dark:border-zinc-800 group border-zinc-400 p-0.5"
+    >
       <span
-        class="absolute inset-[-1000%] animate-[spin_5s_linear_infinite_reverse] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#fff_0%,#09090B_7%)] bg-[conic-gradient(from_90deg_at_50%_50%,#000_0%,#fff_5%)] group-hover:bg-none"></span>
+        class="absolute inset-[-1000%] animate-[spin_5s_linear_infinite_reverse] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#fff_0%,#09090B_7%)] bg-[conic-gradient(from_90deg_at_50%_50%,#000_0%,#fff_5%)] group-hover:bg-none"
+      ></span>
       <button
-        (click)="window.location.href='/login'"
-        [ngClass]="['h-10', 'px-8', 'w-full', 'rounded-full', 'font-semibold', 'text-zinc-800', 'dark:text-zinc-200', 'backdrop-blur-xl', 'bg-zinc-50', 'dark:bg-zinc-900']"
+        (click)="window.location.href = '/login'"
+        [ngClass]="[
+          'h-10',
+          'px-8',
+          'w-full',
+          'rounded-full',
+          'font-semibold',
+          'text-zinc-800',
+          'dark:text-zinc-200',
+          'backdrop-blur-xl',
+          'bg-zinc-50',
+          'dark:bg-zinc-900',
+        ]"
         class="text-lg hover:bg-secondary hover:text-secondary-foreground transition-all ease-in-out duration-300"
       >
         Login
       </button>
     </div>
-
   </nav>
 </header>

@@ -1,5 +1,5 @@
-@import '@angular/cdk/overlay-prebuilt.css';
-@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+@import "@angular/cdk/overlay-prebuilt.css";
+@import url("https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -8,12 +8,12 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;  font-family: "Rethink Sans", sans-serif;
-
+  box-sizing: border-box;
+  font-family: "Rethink Sans", sans-serif;
 }
 
 :root {
-  --font-sans: ''
+  --font-sans: "";
 }
 
 :root {
@@ -62,7 +62,6 @@
   --ring: 142.4 71.8% 29.2%;
   color-scheme: dark;
 }
-
 
 :root {
   --background: 0 0% 100%;
