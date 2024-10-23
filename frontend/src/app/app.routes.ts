@@ -4,6 +4,7 @@ import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { RegisterPageComponent } from './Pages/register-page/register-page.component';
 import { FeaturesPageComponent } from './Pages/features-page/features-page.component';
 import { ContactPageComponent } from './Pages/contact-page/contact-page.component';
+import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,11 @@ export const routes: Routes = [
   {
     path: 'contact',
     component: ContactPageComponent,
+  },
+
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
   },
   {
     path: '',

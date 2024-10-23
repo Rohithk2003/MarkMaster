@@ -32,6 +32,9 @@ public class SecurityConfig {
     @Autowired
     private JwtFilter jwtFilter;
 
+    @Autowired
+    private CustomCorsConfiguration corsConfiguration;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         Filter UsernamePasswordAuthenticationFilter;
@@ -47,6 +50,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
+                .cors(c -> c.configurationSource(corsConfiguration))
                 .build();
     }
 
