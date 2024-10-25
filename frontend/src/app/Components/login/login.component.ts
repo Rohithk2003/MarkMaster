@@ -1,9 +1,8 @@
 import { Component, Injectable } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { FormControl } from '@angular/forms';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { backendUrl } from '../../../../lib/vars';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -15,7 +14,9 @@ import { HttpClient } from '@angular/common/http';
 export class LoginComponent {
   username = new FormControl('');
   password = new FormControl('');
+
   constructor(private http: HttpClient) {}
+
   async onSubmit() {
     console.log('Username: ' + this.username.value);
     console.log('Password: ' + this.password.value);

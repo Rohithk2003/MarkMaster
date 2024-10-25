@@ -1,7 +1,7 @@
 package com.markmaster.backend.config;
 
+import com.markmaster.backend.constants.Constants;
 import com.markmaster.backend.filters.JwtFilter;
-import jakarta.servlet.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,10 +16,12 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.RequestMatcher;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -28,6 +30,7 @@ public class SecurityConfig {
     @Autowired
     private UserDetailsService userDetailsService;
 
+    private List<String> publicUrls;
 
     @Autowired
     private JwtFilter jwtFilter;
@@ -35,14 +38,18 @@ public class SecurityConfig {
     @Autowired
     private CustomCorsConfiguration corsConfiguration;
 
+    SecurityConfig() {
+        Constants constants = new Constants();
+        publicUrls = constants.getPublicUrls();
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        Filter UsernamePasswordAuthenticationFilter;
         return http
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-                .csrf(customizer -> customizer.disable())
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/auth/login").permitAll().requestMatchers("/auth/register").permitAll().requestMatchers("/error").permitAll()
+                        .requestMatchers(publicUrls.toArray(new String[0])).permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(Customizer.withDefaults())
@@ -56,8 +63,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-        AuthenticationManager manager = config.getAuthenticationManager();
-        return manager;
+        return config.getAuthenticationManager();
     }
 
     @Bean

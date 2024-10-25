@@ -1,1 +1,1 @@
-// export interface User
+declare module 'class-variance-authority';
