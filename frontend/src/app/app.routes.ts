@@ -5,6 +5,7 @@ import { RegisterPageComponent } from './Pages/register-page/register-page.compo
 import { FeaturesPageComponent } from './Pages/features-page/features-page.component';
 import { ContactPageComponent } from './Pages/contact-page/contact-page.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
+import { ErrorComponent } from './Components/error/error.component';
 
 export const routes: Routes = [
   {
@@ -32,5 +33,9 @@ export const routes: Routes = [
   {
     path: '',
     component: HomePageComponent,
+  },
+  {
+    path: '**',
+    component: ErrorComponent,
   },
 ];

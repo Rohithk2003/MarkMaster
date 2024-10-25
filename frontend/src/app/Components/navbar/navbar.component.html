@@ -1,16 +1,46 @@
 <header
-  class="flex bg-transparent absolute z-40 w-full justify-center items-center p-7"
+  class="flex bg-transparent absolute z-40 w-full justify-center items-center md:p-7"
 >
   <nav
-    class="flex px-0 p-4 h-14 w-full border-zinc-900 backdrop-blur border-2 rethink-sans flex-row text-primary-foreground max-w-5xl bg-[#121212] rounded-full justify-between items-center"
+    class="flex px-0 p-4 h-14 w-full border-zinc-900 backdrop-blur border-2 rethink-sans flex-row text-primary-foreground md:max-w-5xl bg-[#121212] md:rounded-full justify-between items-center"
   >
-    <a class="hover:cursor-pointer w-max" href="/">
-      <div class="flex flex-row items-center justify-center">
-        <img alt="" height="40" ngSrc="/logo.png" width="40" />
-        <p class="font-bold !text-white text-2xl">MarkMaster</p>
-      </div>
-    </a>
-    <ul class="flex flex-row mr-6 gap-5 font-bold">
+    <div class="flex flex-row gap-2">
+      <button
+        *ngIf="!sidebarVisible"
+        (click)="toggleSidebar()"
+        class="pl-2 block sm:hidden"
+      >
+        <svg
+          class="w-6 h-6 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          ></path>
+        </svg>
+      </button>
+      <button
+        *ngIf="sidebarVisible"
+        (click)="toggleSidebar()"
+        class="pl-2 flex justify-center items-center sm:hidden"
+      >
+        <i class="pi pi-times text-white"></i>
+      </button>
+      <a class="hover:cursor-pointer w-max" href="/">
+        <div class="flex flex-row items-center justify-center">
+          <img alt="" height="40" ngSrc="/logo.png" width="40" />
+          <p class="font-bold !text-white text-2xl">MarkMaster</p>
+        </div>
+      </a>
+    </div>
+
+    <ul class="sm:flex hidden flex-row mr-6 gap-5 text-white font-bold">
       <li *ngFor="let nav of navOptions" class="relative one">
         <a href="{{ nav.href }}">
           <p>{{ nav.text }}</p>
@@ -47,3 +77,27 @@
     </div>
   </nav>
 </header>
+<section
+  (click)="toggleSidebar()"
+  class="bg-black opacity-50 absolute z-30 w-full h-full"
+  *ngIf="sidebarVisible"
+></section>
+<aside
+  class="w-72 bg-main top-14 transition-all ease-in-out duration-300 absolute h-screen z-40"
+  [ngClass]="{
+    'translate-x-0': sidebarVisible,
+    '-translate-x-full': !sidebarVisible,
+  }"
+>
+  <ul class="flex flex-col gap-5 pt-2">
+    <li
+      *ngFor="let item of sidebarData"
+      class="flex gap-8 pl-4 rounded-l-xl rounded-l-b-xl hover:bg-neutral-500 items-center p-2"
+    >
+      <a href="{{ item.href }}" class="flex gap-5 items-center">
+        <i [ngClass]="item.icon" class="text-2xl"></i>
+        {{ item.label }}
+      </a>
+    </li>
+  </ul>
+</aside>

@@ -5,6 +5,8 @@
         <button
           aria-controls="sidebar"
           aria-expanded="true"
+          *ngIf="!sidebarVisible"
+          (click)="toggleSidebar()"
           class="hidden p-2 mr-3 text-gray-600 rounded cursor-pointer lg:inline hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
           id="toggleSidebar"
         >
@@ -26,7 +28,16 @@
         </button>
         <button
           aria-controls="sidebar"
+          *ngIf="sidebarVisible"
           aria-expanded="true"
+          (click)="toggleSidebar()"
+          class="hidden min-w-8 min-h-8 p-2 mr-3 text-gray-600 rounded cursor-pointer lg:inline hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
+          id="toggleSidebar"
+        >
+          <i class="pi pi-times text-white"></i>
+        </button>
+        <button
+          (click)="toggleSidebar()"
           class="p-2 mr-2 text-gray-600 rounded-lg cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
         >
           <svg
@@ -235,3 +246,29 @@
     </div>
   </nav>
 </header>
+<section
+  class="w-full h-full absolute z-30 bg-black opacity-50"
+  [ngClass]="{
+    'translate-x-0': sidebarVisible,
+    '-translate-x-full': !sidebarVisible,
+  }"
+></section>
+<aside
+  class="w-72 bg-main transition-all ease-in-out duration-300 absolute h-screen z-40"
+  [ngClass]="{
+    'translate-x-0': sidebarVisible,
+    '-translate-x-full': !sidebarVisible,
+  }"
+>
+  <ul class="flex flex-col gap-5 pl-2 pt-10">
+    <li
+      *ngFor="let item of sidebarData"
+      class="flex gap-8 pl-4 rounded-l-xl rounded-l-b-xl hover:bg-neutral-500 items-center p-2"
+    >
+      <a href="{{ item.href }}" class="flex gap-5 items-center">
+        <i [ngClass]="item.icon" class="text-2xl"></i>
+        {{ item.label }}
+      </a>
+    </li>
+  </ul>
+</aside>
