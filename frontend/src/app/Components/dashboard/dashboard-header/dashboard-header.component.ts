@@ -10,7 +10,7 @@ import { PrimeIcons, MenuItem } from 'primeng/api';
   styleUrl: './dashboard-header.component.css',
 })
 export class DashboardHeaderComponent {
-  sidebarVisible = !false;
+  sidebarVisible = false;
   sidebarData = [
     {
       label: 'Dashboard',
@@ -32,7 +32,6 @@ export class DashboardHeaderComponent {
       icon: PrimeIcons.CHART_BAR,
       href: '/attendance-data',
     },
-  
   ];
   toggleSidebar(): void {
     this.sidebarVisible = !this.sidebarVisible;

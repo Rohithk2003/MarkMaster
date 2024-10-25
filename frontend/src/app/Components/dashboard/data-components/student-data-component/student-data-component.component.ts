@@ -1,11 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
+import { BrnSeparatorComponent } from '@spartan-ng/ui-separator-brain';
+import { HlmSeparatorDirective } from '@spartan-ng/ui-separator-helm';
+import { NgApexchartsModule } from 'ng-apexcharts';
 import { TableModule } from 'primeng/table';
 
 @Component({
   selector: 'app-student-data-component',
   standalone: true,
-  imports: [TableModule, CommonModule],
+  imports: [
+    TableModule,
+    CommonModule,
+    NgApexchartsModule,
+    HlmSeparatorDirective,
+    BrnSeparatorComponent,
+    HlmButtonDirective,
+  ],
   templateUrl: 'student-data-component.component.html',
 })
 export class StudentDataComponent {

@@ -79,11 +79,11 @@
 </header>
 <section
   (click)="toggleSidebar()"
-  class="bg-black opacity-50 absolute z-30 w-full h-full"
+  class="bg-black opacity-50 md:hidden block absolute z-30 w-full h-full"
   *ngIf="sidebarVisible"
 ></section>
 <aside
-  class="w-72 bg-main top-14 transition-all ease-in-out duration-300 absolute h-screen z-40"
+  class="w-72 bg-main top-14 md:hidden block transition-all ease-in-out duration-300 absolute h-screen z-40"
   [ngClass]="{
     'translate-x-0': sidebarVisible,
     '-translate-x-full': !sidebarVisible,

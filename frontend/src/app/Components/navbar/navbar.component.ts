@@ -14,7 +14,7 @@ import {
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  sidebarVisible = !false;
+  sidebarVisible = false;
   sidebarData = [
     {
       label: 'Home',
