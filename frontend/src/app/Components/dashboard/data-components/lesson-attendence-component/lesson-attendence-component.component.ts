@@ -17,6 +17,7 @@ import {
 } from 'ng-apexcharts';
 import { HlmSeparatorDirective } from '@spartan-ng/ui-separator-helm';
 import { BrnSeparatorComponent } from '@spartan-ng/ui-separator-brain';
+import {HlmButtonDirective} from '@spartan-ng/ui-button-helm';
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -37,6 +38,7 @@ export type ChartOptions = {
     CommonModule,
     HlmSeparatorDirective,
     BrnSeparatorComponent,
+    HlmButtonDirective,
   ],
   templateUrl: './lesson-attendence-component.component.html',
   styleUrl: './lesson-attendence-component.component.css',
