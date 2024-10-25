@@ -9,7 +9,8 @@ import {
 } from 'ng-apexcharts';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
-
+import { HlmSeparatorDirective } from '@spartan-ng/ui-separator-helm';
+import { BrnSeparatorComponent } from '@spartan-ng/ui-separator-brain';
 import {
   ApexNonAxisChartSeries,
   ApexResponsive,
@@ -31,7 +32,13 @@ export type ChartOptions = {
 @Component({
   selector: 'app-attendance-component',
   standalone: true,
-  imports: [CommonModule, HlmButtonDirective, NgApexchartsModule],
+  imports: [
+    CommonModule,
+    HlmButtonDirective,
+    HlmSeparatorDirective,
+    BrnSeparatorComponent,
+    NgApexchartsModule,
+  ],
   templateUrl: './attendance-component.component.html',
   styleUrl: './attendance-component.component.css',
 })
@@ -48,6 +55,7 @@ export class AttendenceComponent {
         type: 'pie',
         background: '#222222',
         foreColor: '#ffffff',
+        fontFamily: 'Rethink Sans',
       },
       markers: {
         colors: ['#fff', '#fff', '#fff'],
@@ -57,9 +65,7 @@ export class AttendenceComponent {
         {
           breakpoint: 480,
           options: {
-            chart: {
-              width: 200,
-            },
+            chart: {},
             legend: {
               position: 'bottom',
               colors: ['#fff', '#fff', '#fff'],

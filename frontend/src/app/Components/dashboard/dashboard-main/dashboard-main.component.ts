@@ -15,6 +15,9 @@ import {
   ApexChart,
 } from 'ng-apexcharts';
 import { AttendenceComponent } from "../data-components/attendance-component/attendance-component.component";
+import { CalenderComponentComponent } from "../data-components/calender-component/calender-component.component";
+import { LessonAttendenceComponentComponent } from "../data-components/lesson-attendence-component/lesson-attendence-component.component";
+import { AvgMarksComponent } from "../data-components/avg-marks-component/avg-marks-component.component";
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -31,7 +34,7 @@ export type ChartOptions = {
 @Component({
   selector: 'app-dashboard-main',
   standalone: true,
-  imports: [CommonModule, NgApexchartsModule, AttendenceComponent],
+  imports: [CommonModule, NgApexchartsModule, AttendenceComponent, CalenderComponentComponent, LessonAttendenceComponentComponent, AvgMarksComponent],
   templateUrl: './dashboard-main.component.html',
   styleUrl: './dashboard-main.component.css',
 })

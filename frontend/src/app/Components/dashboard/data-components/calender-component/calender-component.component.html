@@ -1,1 +1,25 @@
-<p>calender-component works!</p>
+<section
+  class="w-full border flex flex-col justify-center items-center border-gray-700 bg-main min-h-96 rounded-2xl overflow-hidden"
+>
+  <div
+    class="w-full h-20 container mx-auto bg-main flex justify-between items-center"
+  >
+    <div class="flex flex-row items-center gap-4">
+      <p>Calender</p>
+      <p
+        class="bg-white text-xl h-7 w-7 rounded-xl text-black text-center overflow-hidden"
+      >
+        !
+      </p>
+    </div>
+    <button hlmBtn variant="outline">Details</button>
+  </div>
+  <brn-separator hlmSeparator class="bg-gray-500" />
+  <p-calendar
+    class="w-full"
+    [(ngModel)]="date"
+    [inline]="true"
+    styleClass="w-full rounded-xl flex justify-center items-center bg-main"
+    panelStyleClass="bg-main "
+  />
+</section>
