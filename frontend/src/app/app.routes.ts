@@ -6,6 +6,8 @@ import { FeaturesPageComponent } from './Pages/features-page/features-page.compo
 import { ContactPageComponent } from './Pages/contact-page/contact-page.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { ErrorComponent } from './Components/error/error.component';
+import { StudentDetailsPageComponent } from './Pages/student-details-page/student-details-page.component';
+import { DashboardLayoutComponent } from './Components/dashboard/dashboard-layout/dashboard-layout.component';
 
 export const routes: Routes = [
   {
@@ -28,7 +30,22 @@ export const routes: Routes = [
 
   {
     path: 'dashboard',
-    component: DashboardComponent,
+    component: DashboardLayoutComponent,
+
+    children: [
+      {
+        path: 'student-details',
+        component: StudentDetailsPageComponent,
+      },
+      {
+        path: '',
+        component: DashboardComponent,
+      },
+    ],
+  },
+  {
+    path: 'dashboard/student-details',
+    component: StudentDetailsPageComponent,
   },
   {
     path: '',

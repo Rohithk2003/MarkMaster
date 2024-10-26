@@ -247,6 +247,7 @@
   </nav>
 </header>
 <section
+  (click)="toggleSidebar()"
   class="w-full h-full absolute z-30 bg-black opacity-50"
   [ngClass]="{
     'translate-x-0': sidebarVisible,
@@ -254,7 +255,7 @@
   }"
 ></section>
 <aside
-  class="w-72 bg-main transition-all ease-in-out duration-300 absolute h-screen z-40"
+  class="w-72 bg-main transition-all absolute ease-in-out duration-300 h-screen z-40"
   [ngClass]="{
     'translate-x-0': sidebarVisible,
     '-translate-x-full': !sidebarVisible,

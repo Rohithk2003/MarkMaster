@@ -20,17 +20,17 @@ export class DashboardHeaderComponent {
     {
       label: 'Student Details',
       icon: PrimeIcons.FILE,
-      href: '/student-details',
+      href: '/dashboard/student-details',
     },
     {
       label: 'Marks',
       icon: PrimeIcons.CHART_SCATTER,
-      href: '/marks-data',
+      href: '/dashboard/marks-data',
     },
     {
       label: 'Attendance',
       icon: PrimeIcons.CHART_BAR,
-      href: '/attendance-data',
+      href: '/dashboard/attendance-data',
     },
   ];
   toggleSidebar(): void {
