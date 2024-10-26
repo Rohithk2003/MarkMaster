@@ -1,12 +1,12 @@
 import { Component, Injectable } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NgOptimizedImage, ReactiveFormsModule, FormsModule],
+  imports: [NgOptimizedImage, CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -14,10 +14,11 @@ import { HttpClient } from '@angular/common/http';
 export class LoginComponent {
   username = new FormControl('');
   password = new FormControl('');
-
+  clicked = false;
   constructor(private http: HttpClient) {}
 
   async onSubmit() {
+    this.clicked = true;
     console.log('Username: ' + this.username.value);
     console.log('Password: ' + this.password.value);
     // const res = await fetch(, {
@@ -37,6 +38,7 @@ export class LoginComponent {
       })
       .subscribe((data) => {
         console.log(data);
+        this.clicked = false;
       });
   }
 }

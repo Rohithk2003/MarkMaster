@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import {NgOptimizedImage} from "@angular/common";
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-    imports: [
-        NgOptimizedImage
-    ],
+  imports: [NgOptimizedImage, CommonModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-
+  clicked = false;
 }
