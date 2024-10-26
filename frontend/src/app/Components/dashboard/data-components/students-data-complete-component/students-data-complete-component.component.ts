@@ -1,16 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { BrnSeparatorComponent } from '@spartan-ng/ui-separator-brain';
 import { HlmSeparatorDirective } from '@spartan-ng/ui-separator-helm';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { TableModule } from 'primeng/table';
-
+import { Router } from '@angular/router';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-students-data-complete-component',
   standalone: true,
   imports: [
     TableModule,
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     NgApexchartsModule,
     HlmSeparatorDirective,
@@ -21,6 +24,7 @@ import { TableModule } from 'primeng/table';
   styleUrl: './students-data-complete-component.component.css',
 })
 export class StudentsDataCompleteComponentComponent {
+  constructor(private router: Router) {}
   products = [
     {
       id: '1000',
@@ -47,4 +51,18 @@ export class StudentsDataCompleteComponentComponent {
       rating: 3,
     },
   ];
+  handleSearchApi() {
+    if (this.query.getRawValue() != null) {
+      this.updateQueryParams(this.query.getRawValue());
+    }
+  }
+  updateQueryParams(queryString: string | null) {
+    this.router.navigate([], {
+      queryParams: {
+        query: queryString,
+      },
+      queryParamsHandling: 'merge',
+    });
+  }
+  query = new FormControl('');
 }
