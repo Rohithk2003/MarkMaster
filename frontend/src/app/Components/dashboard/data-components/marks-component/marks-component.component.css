@@ -1,0 +1,9 @@
+.table-container {
+  width: 100%;
+  overflow: auto;
+}
+
+.filter-input {
+  margin-bottom: 16px;
+  width: 100%;
+}

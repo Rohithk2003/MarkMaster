@@ -9,6 +9,7 @@ import { ErrorComponent } from './Components/error/error.component';
 import { StudentDetailsPageComponent } from './Pages/student-details-page/student-details-page.component';
 import { DashboardLayoutComponent } from './Components/dashboard/dashboard-layout/dashboard-layout.component';
 import { SearchResultsComponent } from './Components/search-results/search-results.component';
+import { MarksComponentComponent } from './Components/dashboard/data-components/marks-component/marks-component.component';
 
 export const routes: Routes = [
   {
@@ -39,15 +40,16 @@ export const routes: Routes = [
         component: StudentDetailsPageComponent,
       },
       {
+        path: 'marks-data',
+        component: MarksComponentComponent,
+      },
+      {
         path: '',
         component: DashboardComponent,
       },
     ],
   },
-  {
-    path: 'dashboard/student-details',
-    component: StudentDetailsPageComponent,
-  },
+
   {
     path: '',
     component: HomePageComponent,
