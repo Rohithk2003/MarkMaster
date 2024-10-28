@@ -1,0 +1,87 @@
+<app-navbar />
+<section class="flex justify-center relative top-44 items-center">
+  <div class="container mx-auto p-4 min-h-screen space-y-4">
+    <div class="search-input flex space-x-2">
+      <div class="relative mt-1 w-full">
+        <div
+          class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
+        >
+          <svg
+            aria-hidden="true"
+            class="w-8 h-8 text-gray-500 dark:text-gray-400"
+            fill="none"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+        <input
+          class="border border-gray-300 text-gray-900 sm:text-2xl rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-16 p-5 bg-main dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          id="topbar-search"
+          name="email"
+          [(ngModel)]="query"
+          (input)="handleSearch()"
+          placeholder="Search"
+          type="text"
+        />
+      </div>
+      <!-- <button (click)="handleSearch()" [disabled]="isLoading" class="button">
+        {{ isLoading ? "Searching..." : "Search" }}
+      </button> -->
+    </div>
+
+    <div
+      *ngIf="results.length > 0; else noResults"
+      class="results-list space-y-4"
+    >
+      <div
+        *ngFor="let result of results"
+        class="result-item border p-4 rounded-md"
+      >
+        <h2 class="title text-2xl font-semibold">{{ result.title }}</h2>
+        <p class="description text-lg text-gray-200">
+          {{ result.description }}
+        </p>
+      </div>
+
+      <!-- <div class="pagination">
+        <button
+          (click)="handlePageChange(currentPage - 1)"
+          [disabled]="currentPage === 1"
+        >
+          Previous
+        </button>
+        <ng-container
+          *ngFor="let page of [].constructor(totalPages); let i = index"
+        >
+          <button
+            (click)="handlePageChange(i + 1)"
+            [class.active]="currentPage === i + 1"
+          >
+            {{ i + 1 }}
+          </button>
+        </ng-container>
+        <button
+          (click)="handlePageChange(currentPage + 1)"
+          [disabled]="currentPage === totalPages"
+        >
+          Next
+        </button>
+      </div> -->
+    </div>
+
+    <ng-template #noResults>
+      <p class="text-center text-xl text-white">
+        No results to display. Try searching for something!
+      </p>
+    </ng-template>
+  </div>
+</section>
+<app-footer />

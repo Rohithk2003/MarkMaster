@@ -8,6 +8,7 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { ErrorComponent } from './Components/error/error.component';
 import { StudentDetailsPageComponent } from './Pages/student-details-page/student-details-page.component';
 import { DashboardLayoutComponent } from './Components/dashboard/dashboard-layout/dashboard-layout.component';
+import { SearchResultsComponent } from './Components/search-results/search-results.component';
 
 export const routes: Routes = [
   {
@@ -50,6 +51,10 @@ export const routes: Routes = [
   {
     path: '',
     component: HomePageComponent,
+  },
+  {
+    path: 'search',
+    component: SearchResultsComponent,
   },
   {
     path: '**',
