@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { StudentsDataCompleteComponentComponent } from "../../Components/dashboard/data-components/students-data-complete-component/students-data-complete-component.component";
+import { StudentsDataCompleteComponentComponent } from '../../Components/dashboard/data-components/students-data-complete-component/students-data-complete-component.component';
 
 @Component({
   selector: 'app-student-details-page',

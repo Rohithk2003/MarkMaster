@@ -5,6 +5,7 @@ import {
   NgForOf,
   NgOptimizedImage,
 } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -37,7 +38,11 @@ export class NavbarComponent {
     { text: 'Features', href: '/features' },
     { text: 'Contact', href: '/contact' },
   ];
+  constructor(private router: Router) {}
   toggleSidebar() {
     this.sidebarVisible = !this.sidebarVisible;
+  }
+  onLoginClick() {
+    this.router.navigate(['/login']);
   }
 }

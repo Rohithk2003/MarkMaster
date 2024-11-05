@@ -1,5 +1,5 @@
-import {CommonModule} from '@angular/common';
-import {Component, ViewChild} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, ViewChild } from '@angular/core';
 import {
   ApexDataLabels,
   ApexFill,
@@ -7,22 +7,16 @@ import {
   ApexTheme,
   ChartComponent,
 } from 'ng-apexcharts';
-import {NgApexchartsModule} from 'ng-apexcharts';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 import {
   ApexNonAxisChartSeries,
   ApexResponsive,
   ApexChart,
 } from 'ng-apexcharts';
-import {AttendenceComponent} from "../data-components/attendance-component/attendance-component.component";
-import {CalenderComponentComponent} from "../data-components/calender-component/calender-component.component";
-import {
-  LessonAttendenceComponentComponent
-} from "../data-components/lesson-attendence-component/lesson-attendence-component.component";
-import {AvgMarksComponent} from "../data-components/avg-marks-component/avg-marks-component.component";
-import {
-  StudentDataComponent
-} from '../data-components/student-data-component/student-data-component.component';
+import { CalenderComponentComponent } from '../data-components/calender-component/calender-component.component';
+import { AvgMarksComponent } from '../data-components/avg-marks-component/avg-marks-component.component';
+import { StudentDataComponent } from '../data-components/student-data-component/student-data-component.component';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -40,7 +34,13 @@ export type ChartOptions = {
 @Component({
   selector: 'app-dashboard-main',
   standalone: true,
-  imports: [CommonModule, NgApexchartsModule, AttendenceComponent, CalenderComponentComponent, LessonAttendenceComponentComponent, AvgMarksComponent,  StudentDataComponent],
+  imports: [
+    CommonModule,
+    NgApexchartsModule,
+    CalenderComponentComponent,
+    AvgMarksComponent,
+    StudentDataComponent,
+  ],
   templateUrl: './dashboard-main.component.html',
   styleUrl: './dashboard-main.component.css',
 })

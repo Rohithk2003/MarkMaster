@@ -7,3 +7,24 @@
   margin-bottom: 16px;
   width: 100%;
 }
+/* Custom styles for progress bar */
+.progress-bar {
+  /* Hide default styling and apply custom styles */
+  appearance: none;
+  border-radius: 0.5rem; /* Rounded edges */
+  overflow: hidden;
+}
+
+.progress-bar::-webkit-progress-bar {
+  background-color: gray; /* Tailwind's gray-300 for the background */
+}
+
+.progress-bar::-webkit-progress-value {
+  background-color: #2e064e; /* Tailwind's green-500 for the filled portion */
+  border-radius: 0.5rem;
+}
+
+.progress-bar::-moz-progress-bar {
+  background-color: #eeeeee; /* Tailwind's green-500 for the filled portion */
+  border-radius: 0.5rem;
+}

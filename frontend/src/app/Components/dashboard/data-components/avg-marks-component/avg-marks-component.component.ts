@@ -9,6 +9,8 @@ import {
 } from 'ng-apexcharts';
 import { BrnSeparatorComponent } from '@spartan-ng/ui-separator-brain';
 
+import { BrnSelectImports } from '@spartan-ng/ui-select-brain';
+import { HlmSelectImports } from '@spartan-ng/ui-select-helm';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
@@ -40,6 +42,8 @@ export type ChartOptions = {
     HlmButtonDirective,
     BrnSeparatorComponent,
     NgApexchartsModule,
+    BrnSelectImports,
+    HlmSelectImports,
     HlmSeparatorDirective,
   ],
   templateUrl: './avg-marks-component.component.html',
@@ -49,7 +53,21 @@ export class AvgMarksComponent {
   @ViewChild('chart')
   chart: ChartComponent = new ChartComponent();
   public chartOptions: Partial<ChartOptions>;
-
+  selectedCourse = 'CSE A';
+  courses = [
+    {
+      name: 'CSE A',
+      code: 'CSE A',
+    },
+    {
+      name: 'CSE B',
+      code: 'CSE B',
+    },
+    {
+      name: 'CSE C',
+      code: 'CSE C',
+    },
+  ];
   constructor() {
     this.chartOptions = {
       series: [44, 13, 20, 90, 98],

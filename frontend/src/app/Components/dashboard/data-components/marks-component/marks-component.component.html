@@ -1,14 +1,19 @@
 <section class="py-20">
   <div class="mx-32">
     <div class="flex flex-row justify-between items-center">
-      <h4>Student Marks Dashboard</h4>
-
-      <p-dropdown
-        [options]="courses"
-        [(ngModel)]="selectedCourse"
-        optionLabel="name"
-        placeholder="Filter by Course"
-      />
+      <p class="rethink-sans text-4xl font-bold">Student Marks Dashboard</p>
+      <brn-select class="inline-block" placeholder="Filter by course">
+        <hlm-select-trigger class="w-56">
+          <hlm-select-value />
+        </hlm-select-trigger>
+        <hlm-select-content>
+          <hlm-option
+            *ngFor="let course of courses"
+            value="{{ course.code }}"
+            >{{ course.name }}</hlm-option
+          >
+        </hlm-select-content>
+      </brn-select>
     </div>
     <div
       class="flex flex-row justify-between items-center flex-wrap gap-20 w-full py-8"
@@ -21,13 +26,14 @@
       <div class="border p-5 w-72 h-44 border-gray-600 rounded-xl">
         <p class="text-xl">Average Mark</p>
         <p class="font-bold text-3xl">50%</p>
-        <p class="text-3xl font-bold">
-          <p-progressBar
-            [value]="50"
-            [style]="{ height: '30px', fontSize: '30px' }"
-            class="font-bold text-xl"
-          />
-        </p>
+        <div class="text-3xl font-bold relative">
+          <progress
+            value="50"
+            max="100"
+            class="progress-bar w-56 h-6 bg-gray-300"
+          ></progress>
+          <p class="absolute top-1 text-base right-[50%]">50%</p>
+        </div>
       </div>
 
       <div class="border p-5 w-72 h-44 border-gray-600 rounded-xl">
@@ -42,67 +48,36 @@
   </div>
   <section class="flex rounded-xl justify-center items-center">
     <div class="table-container rounded-xl mx-32 w-full">
-      <table mat-table [dataSource]="dataSource" class="rounded-xl p-3" matSort>
-        <div class="bg-white w-full p-4">
-          <input
-            type="text"
-            class="bg-white border py-2.5 px-4 w-96 text-black rounded-xl"
-            placeholder="Filter by name"
-          />
-        </div>
-        <ng-container matColumnDef="select">
-          <th mat-header-cell *matHeaderCellDef>
-            <mat-checkbox
-              (change)="$event ? masterToggle() : null"
-            ></mat-checkbox>
-          </th>
-          <td mat-cell *matCellDef="let row">
-            <mat-checkbox
-              (click)="$event.stopPropagation()"
-              (change)="$event ? toggleSelection(row) : null"
-            ></mat-checkbox>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-        </ng-container>
-        <ng-container matColumnDef="class">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Class</th>
-          <td mat-cell *matCellDef="let element">{{ element.class }}</td>
-        </ng-container>
-        <ng-container matColumnDef="math">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Math</th>
-          <td mat-cell *matCellDef="let element">{{ element.math }}</td>
-        </ng-container>
-        <ng-container matColumnDef="science">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Science</th>
-          <td mat-cell *matCellDef="let element">{{ element.science }}</td>
-        </ng-container>
-        <ng-container matColumnDef="english">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>English</th>
-          <td mat-cell *matCellDef="let element">{{ element.english }}</td>
-        </ng-container>
-        <!-- History Column -->
-        <ng-container matColumnDef="history">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>History</th>
-          <td mat-cell *matCellDef="let element">{{ element.history }}</td>
-        </ng-container>
-        <ng-container matColumnDef="options">
-          <th mat-header-cell *matHeaderCellDef>Options</th>
-          <td mat-cell *matCellDef="let row">
-            <button mat-icon-button [matMenuTriggerFor]="menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item>Edit</button>
-              <button mat-menu-item>Delete</button>
-            </mat-menu>
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
+      <div class="bg-neutral-800 w-full p-4">
+        <input
+          type="text"
+          class="bg-white border py-2.5 px-4 w-96 text-black rounded-lg"
+          placeholder="Filter by name"
+        />
+      </div>
+      <div class="py-5 px-5 bg-neutral-800">
+        <table class="w-full h-full">
+          <thead>
+            <tr class="border-b h-14">
+              <th><input type="checkbox" name="" id="" /></th>
+              <th *ngFor="let heading of headers">
+                {{ heading }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let student of students" class="h-14 text-center">
+              <td><input type="checkbox" name="" id="" /></td>
+              <td>{{ student.name }}</td>
+              <td>{{ student.age }}</td>
+              <td>{{ student.phoneNumber }}</td>
+              <td>{{ student.email }}</td>
+              <td>{{ student.coursesEnrolled }}</td>
+              <td>{{ student.batch }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 </section>

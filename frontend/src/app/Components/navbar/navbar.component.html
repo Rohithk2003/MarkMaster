@@ -35,12 +35,12 @@
       <a class="hover:cursor-pointer w-max" href="/">
         <div class="flex flex-row items-center justify-center">
           <img alt="" height="40" ngSrc="/logo.png" width="40" />
-          <p class="font-bold !text-white text-2xl">MarkMaster</p>
+          <p class="font-bold !text-white text-2xl pt-4">MarkMaster</p>
         </div>
       </a>
     </div>
 
-    <ul class="sm:flex hidden flex-row mr-6 gap-5 text-white font-bold">
+    <ul class="sm:flex hidden flex-row mr-6 gap-5 pt-3 text-white font-bold">
       <li *ngFor="let nav of navOptions" class="relative one">
         <a href="{{ nav.href }}">
           <p>{{ nav.text }}</p>
@@ -56,8 +56,7 @@
       <span
         class="absolute inset-[-1000%] animate-[spin_5s_linear_infinite_reverse] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#fff_0%,#09090B_7%)] bg-[conic-gradient(from_90deg_at_50%_50%,#000_0%,#fff_5%)] group-hover:bg-none"
       ></span>
-      <a
-        href="/login"
+      <button
         [ngClass]="[
           'h-10',
           'px-8',
@@ -70,10 +69,11 @@
           'bg-zinc-50',
           'dark:bg-zinc-900',
         ]"
+        (click)="onLoginClick()"
         class="text-lg hover:bg-secondary hover:text-secondary-foreground transition-all ease-in-out duration-300"
       >
         Login
-      </a>
+      </button>
     </div>
   </nav>
 </header>

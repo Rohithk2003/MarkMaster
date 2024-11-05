@@ -19,17 +19,17 @@ import { PrimeIcons, MenuItem } from 'primeng/api';
 export class DashboardHeaderComponent {
   constructor(@Inject(PLATFORM_ID) private platformId: object) {}
 
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      window.addEventListener('click', this.handleClickOutside.bind(this));
-    }
-  }
+  // ngOnInit(): void {
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     window.addEventListener('click', this.handleClickOutside.bind(this));
+  //   }
+  // }
 
-  ngOnDestroy(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      window.removeEventListener('click', this.handleClickOutside.bind(this));
-    }
-  }
+  // ngOnDestroy(): void {
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     window.removeEventListener('click', this.handleClickOutside.bind(this));
+  //   }
+  // }
 
   sidebarVisible = false;
   dropdownVisible = false;
@@ -49,11 +49,6 @@ export class DashboardHeaderComponent {
       icon: PrimeIcons.CHART_SCATTER,
       href: '/dashboard/marks-data',
     },
-    {
-      label: 'Attendance',
-      icon: PrimeIcons.CHART_BAR,
-      href: '/dashboard/attendance-data',
-    },
   ];
   toggleSidebar(): void {
     this.sidebarVisible = !this.sidebarVisible;
@@ -67,11 +62,11 @@ export class DashboardHeaderComponent {
     if (this.dropdownVisible && element.tagName !== 'IMG')
       this.dropdownVisible = false;
   }
-  handleClickOutside(event: Event): void {
-    const target = event.target as HTMLElement;
+  // handleClickOutside(event: Event): void {
+  //   const target = event.target as HTMLElement;
 
-    if (this.dropdownVisible && target.tagName !== 'IMG') {
-      this.dropdownVisible = false;
-    }
-  }
+  //   if (this.dropdownVisible && target.tagName !== 'IMG') {
+  //     this.dropdownVisible = false;
+  //   }
+  // }
 }

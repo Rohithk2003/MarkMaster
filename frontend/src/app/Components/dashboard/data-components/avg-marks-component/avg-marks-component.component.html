@@ -4,13 +4,25 @@
   <div
     class="w-full h-20 rounded-xl container mx-auto bg-main flex justify-between items-center"
   >
-    <div class="flex flex-row items-center gap-4">
+    <div class="flex flex-row justify-center items-center gap-4">
       <p>Average score</p>
       <p
         class="bg-white text-xl h-7 w-7 rounded-xl text-black text-center overflow-hidden"
       >
         !
       </p>
+      <brn-select placeholder="Filter by course">
+        <hlm-select-trigger class="w-56">
+          <hlm-select-value />
+        </hlm-select-trigger>
+        <hlm-select-content>
+          <hlm-option
+            *ngFor="let course of courses"
+            value="{{ course.code }}"
+            >{{ course.name }}</hlm-option
+          >
+        </hlm-select-content>
+      </brn-select>
     </div>
     <button hlmBtn variant="outline">Details</button>
   </div>

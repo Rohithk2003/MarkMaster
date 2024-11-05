@@ -1370,7 +1370,6 @@
   }
 
   .p-dropdown {
-    background: #09090b;
     border: 1px solid #3f3f46;
     transition:
       background-color 0.2s,
@@ -1441,7 +1440,6 @@
   }
 
   .p-dropdown-panel {
-    background: #18181b;
     color: #ffffff;
     border: 1px solid #3f3f46;
     border-radius: 6px;
@@ -11376,6 +11374,3 @@
     border-radius: 4px;
   }
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
