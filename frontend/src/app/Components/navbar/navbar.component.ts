@@ -37,7 +37,6 @@ export class NavbarComponent {
     { text: 'Features', href: '/features' },
     { text: 'Contact', href: '/contact' },
   ];
-  protected readonly window = window;
   toggleSidebar() {
     this.sidebarVisible = !this.sidebarVisible;
   }
