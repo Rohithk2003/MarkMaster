@@ -7,8 +7,9 @@ import java.util.Optional;
 
 @Entity
 @Table(name = "student_mark_exam", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"course_id", "student_id", "exam_id"})
+        @UniqueConstraint(columnNames = { "course_id", "student_id", "exam_id" })
 })
+
 public class StudentMarkExam extends AbstractBaseEntity {
 
     private Integer mark;

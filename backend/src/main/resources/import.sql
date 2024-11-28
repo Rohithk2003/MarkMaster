@@ -20,3 +20,8 @@ INSERT INTO Student_Courses (student_id, courses_id) VALUES (1, 1);
 INSERT INTO Student_Courses (student_id, courses_id) VALUES (1, 2);
 INSERT INTO Student_Courses (student_id, courses_id) VALUES (2, 1);
 INSERT INTO user_details(username,password) values ('rohithk','$2a$12$sRXv17Aj73Dob.Qc8s.sr.Quxy0DyDrcmGmehLMUva223o1iOV4N6')
+INSERT INTO student_mark_exam (mark, course_id, exam_id, id, student_id)
+VALUES (85, 1, 1, 1, 1);
+
+INSERT INTO student_mark_exam (mark, course_id, exam_id, id, student_id)
+VALUES (90, 1, 2, 2, 1); -- (example: 90 marks for Course ID 101)

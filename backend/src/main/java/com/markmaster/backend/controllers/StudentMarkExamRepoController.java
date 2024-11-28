@@ -13,24 +13,33 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/student/mark")
 public class StudentMarkExamRepoController {
-    private final StudentExamMarkService
-            studentExamMarkService;
+    private final StudentExamMarkService studentExamMarkService;
     private final HttpResponseMessageHandler responseMessageHandler;
 
     @Autowired
-    public StudentMarkExamRepoController(StudentExamMarkService studentExamMarkService, HttpResponseMessageHandler responseMessageHandler) {
+    public StudentMarkExamRepoController(StudentExamMarkService studentExamMarkService,
+            HttpResponseMessageHandler responseMessageHandler) {
         this.studentExamMarkService = studentExamMarkService;
         this.responseMessageHandler = responseMessageHandler;
     }
 
     @GetMapping("/")
-    public ResponseEntity<Map<String, Object>> getRequest() {
-        return responseMessageHandler.updateHttpResponse("Success", HttpStatus.OK, studentExamMarkService.findAll());
+    public ResponseEntity<Map<String, Object>> getRequestData() {
+        return responseMessageHandler.updateHttpResponse("Success", HttpStatus.OK,
+                studentExamMarkService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> getRequest(@PathVariable Long id) {
+        return responseMessageHandler.updateHttpResponse("Success", HttpStatus.OK,
+                studentExamMarkService.findByStudentId(id));
     }
 
     @PostMapping("/")
     public ResponseEntity<Map<String, Object>> postRequest(@RequestBody StudentMarkExam studentMarkExam) {
+
         studentExamMarkService.save(studentMarkExam);
-        return responseMessageHandler.updateHttpResponse("Success", HttpStatus.CREATED, studentExamMarkService.findAll());
+        return responseMessageHandler.updateHttpResponse("Success", HttpStatus.CREATED,
+                studentExamMarkService.findAll());
     }
 }

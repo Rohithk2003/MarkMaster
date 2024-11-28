@@ -1,0 +1,82 @@
+<section class="py-20 min-h-screen">
+  <div class="mx-auto max-w-4xl bg-white shadow-lg rounded-lg p-8">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-6">Add Marks</h2>
+
+    <form (ngSubmit)="onSubmit()" #addMarksForm="ngForm">
+      <div class="my-4">
+        <label
+          for="examSelect"
+          class="block text-lg font-semibold text-gray-700"
+          >Select Exam:</label
+        >
+        <select
+          id="examSelect"
+          [(ngModel)]="selectedExam"
+          name="exam"
+          required
+          class="border border-gray-300 p-2 rounded-lg w-full mb-4"
+        >
+          <option *ngFor="let exam of exams" [value]="exam.id">
+            {{ exam.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="my-4">
+        <label
+          for="studentSelect"
+          class="block text-lg font-semibold text-gray-700"
+          >Select Student:</label
+        >
+        <select
+          id="studentSelect"
+          [(ngModel)]="selectedStudent"
+          name="student"
+          required
+          class="border border-gray-300 p-2 rounded-lg w-full mb-4"
+        >
+          <option *ngFor="let student of students" [value]="student.id">
+            {{ student.firstName }} ({{ student.rollNo }})
+          </option>
+        </select>
+      </div>
+
+      <div class="my-4">
+        <label
+          for="courseSelect"
+          class="block text-lg font-semibold text-gray-700"
+          >Select Course:</label
+        >
+        <select
+          id="courseSelect"
+          [(ngModel)]="selectedCourse"
+          name="course"
+          required
+          class="border border-gray-300 p-2 rounded-lg w-full mb-4"
+        >
+          <option *ngFor="let course of courses" [value]="course.id">
+            {{ course.courseName }}
+          </option>
+        </select>
+      </div>
+
+      <div class="my-4">
+        <label for="markInput" class="block text-lg font-semibold text-gray-700"
+          >Enter Mark:</label
+        >
+        <input
+          type="number"
+          [(ngModel)]="mark"
+          name="mark"
+          required
+          placeholder="Enter mark"
+          class="border border-gray-300 p-2 rounded-lg w-full mb-4"
+        />
+      </div>
+
+      <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-lg">
+        Add Mark
+      </button>
+    </form>
+  </div>
+</section>

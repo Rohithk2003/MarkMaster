@@ -17,7 +17,7 @@
   </div>
   <p-table
     [value]="products"
-    styleClass="border w-full border border-gray-800 bg-main border-gray-200 overflow-hidden"
+    styleClass="border min-h-dvh w-full border border-gray-800 bg-main border-gray-200 overflow-hidden"
     class="w-full"
     [tableStyle]="{ 'min-width': '50rem', width: '100%' }"
   >
@@ -26,18 +26,18 @@
       class="border-b p-3 text-center rounded-2xl"
     >
       <tr class="bg-main p-2">
-        <th>Name</th>
-        <th>Roll Number</th>
-        <th>Parent Phone Number</th>
-        <th>Quantity</th>
+        <th *ngFor="let i of headers">{{ i }}</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
       <tr class="bg-main p-2">
-        <td>{{ product.code }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.category }}</td>
-        <td>{{ product.quantity }}</td>
+        <td>{{ product.firstName }}</td>
+        <td>{{ product.lastName }}</td>
+        <td>{{ product.age }}</td>
+        <td>{{ product.email }}</td>
+        <td>{{ product.rollNo }}</td>
+        <td>{{ product.dob }}</td>
+        <td>{{ product.batch?.batch }}</td>
       </tr>
     </ng-template>
   </p-table>

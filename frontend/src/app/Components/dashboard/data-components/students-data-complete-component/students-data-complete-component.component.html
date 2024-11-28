@@ -34,87 +34,51 @@
       />
     </div>
     <div class="space-x-2">
-      <button (click)="showDialog()" hlmBtn>Add Student</button>
-      <button hlmBtn variant="default">Modify</button>
-    </div>
+      <a href="/dashboard/add-student">Add Student</a>
+      </div>
   </div>
   <div
     class="w-full flex flex-col justify-start items-center bg-main h-full min-h-[65dvh] rounded-b-2xl overflow-hidden"
   >
     <p-table
-      [value]="products"
-      styleClass=" w-full   bg-main  overflow-hidden"
+      [value]="filteredStudentsData"
+      styleClass="border min-h-dvh w-full border border-gray-800 bg-main border-gray-200 overflow-hidden"
       class="w-full"
       [tableStyle]="{ 'min-width': '50rem', width: '100%' }"
     >
       <ng-template
         pTemplate="header"
-        class="border-b bg-main text-center !text-lg rounded-2xl"
+        class="border-b p-3 text-center rounded-2xl"
       >
-        <tr class="!text-lg">
-          <th style="padding: 20px !important">Name</th>
-          <th style="padding: 20px !important">Roll Number</th>
-          <th style="padding: 20px !important">Parent Phone Number</th>
-          <th style="padding: 20px !important">Quantity</th>
+        <tr class="bg-main p-2">
+          <th *ngFor="let i of headers">{{ i }}</th>
         </tr>
       </ng-template>
-
-      <ng-template
-        pTemplate="body"
-        class="hover:bg-neutral-600 hover:cursor-pointer"
-        let-product
-      >
-        <tr
-          class="bg-main p-4 hover:bg-neutral-600 text-lg hover:cursor-pointer"
-        >
-          <td style="padding: 20px !important">{{ product.code }}</td>
-          <td style="padding: 20px !important">{{ product.name }}</td>
-          <td style="padding: 20px !important">{{ product.category }}</td>
-          <td style="padding: 20px !important">{{ product.quantity }}</td>
+      <ng-template pTemplate="body" let-item>
+        <tr class="bg-main p-2">
+          <td>{{ item.firstName }}</td>
+          <td>{{ item.lastName }}</td>
+          <td>{{ item.age }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.rollNo }}</td>
+          <td>{{ item.dob }}</td>
+          <td>{{ item.batch?.batch }}</td>
+          <td>
+            <button
+              class="bg-blue-500 py-2 px-6 rounded-xl mr-2"
+              (click)="createRouteLink(item.id)"
+            >
+              Edit
+            </button>
+            <button
+              class="bg-red-500 py-2 px-6 rounded-xl"
+              (click)="deleteStudent(item.id)"
+            >
+              Delete
+            </button>
+          </td>
         </tr>
       </ng-template>
     </p-table>
   </div>
 </section>
-<p-dialog
-  header="Add student"
-  [modal]="true"
-  [(visible)]="visible"
-  [style]="{ width: '25rem' }"
->
-  <span class="p-text-secondary block mb-5">Put student details here.</span>
-  <div class="grid grid-cols-4 gap-3 mb-3">
-    <div class="flex items-center">
-      <label for="name" class="font-semibold w-6rem">Name</label>
-    </div>
-    <input
-      pInputText
-      id="name"
-      class="flex-auto p-2 col-span-3 w-full"
-      autocomplete="off"
-    />
-  </div>
-  <div class="grid grid-cols-4 gap-3 mb-5">
-    <div class="flex items-center">
-      <label for="email" class="font-semibold col-span-1 w-6rem">Email</label>
-    </div>
-
-    <input
-      pInputText
-      id="email"
-      class="flex-auto p-2 col-span-3 w-full"
-      autocomplete="off"
-    />
-  </div>
-  <div class="flex justify-content-end gap-2">
-    <button
-      hlmBtn
-      label="Cancel"
-      severity="secondary"
-      (click)="visible = false"
-    >
-      Cancel
-    </button>
-    <button hlmBtn label="Save" (onClick)="visible = false">Save</button>
-  </div>
-</p-dialog>

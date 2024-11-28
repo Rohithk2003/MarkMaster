@@ -1,6 +1,7 @@
 package com.markmaster.backend.models;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Course")
@@ -30,7 +31,6 @@ public class Course extends AbstractBaseEntity {
         this.department = department;
     }
 
-
     public String getCourseFullName() {
         return courseFullName;
     }
@@ -38,4 +38,5 @@ public class Course extends AbstractBaseEntity {
     public void setCourseFullName(String courseFullName) {
         this.courseFullName = courseFullName;
     }
+
 }

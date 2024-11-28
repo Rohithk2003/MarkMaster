@@ -1,0 +1,149 @@
+<div
+  class="min-h-screen py-20 bg-gray-100 flex flex-col justify-center items-center"
+>
+  <div class="bg-white shadow-md rounded-lg p-8 max-w-lg w-full">
+    <h2 class="text-2xl font-bold mb-6 text-center text-black">
+      Add New Student
+    </h2>
+
+    <div *ngIf="loading" class="flex justify-center items-center py-4">
+      <div
+        class="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"
+      ></div>
+    </div>
+
+    <form
+      *ngIf="!loading"
+      [formGroup]="studentForm"
+      (ngSubmit)="onSubmit()"
+      class="space-y-4"
+    >
+      <div class="flex flex-col space-y-2">
+        <label for="firstName" class="font-semibold text-black"
+          >First Name</label
+        >
+        <input
+          pInputText
+          id="firstName"
+          formControlName="firstName"
+          class="p-2 rounded-lg border border-gray-300 bg-white text-white"
+          placeholder="Enter first name"
+        />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label for="lastName" class="font-semibold text-black">Last Name</label>
+        <input
+          pInputText
+          id="lastName"
+          formControlName="lastName"
+          class="p-2 rounded-lg border border-gray-300 bg-white text-white"
+          placeholder="Enter last name"
+        />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label for="email" class="font-semibold text-black">Email</label>
+        <input
+          pInputText
+          id="email"
+          formControlName="email"
+          type="email"
+          class="p-2 rounded-lg border border-gray-300 bg-white text-white"
+          placeholder="Enter email address"
+        />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label for="age" class="font-semibold text-black">Age</label>
+        <input
+          pInputText
+          id="age"
+          formControlName="age"
+          type="number"
+          class="p-2 rounded-lg border border-gray-300 bg-white text-white"
+          placeholder="Enter age"
+        />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label for="rollNo" class="font-semibold text-black">Roll Number</label>
+        <input
+          pInputText
+          id="rollNo"
+          formControlName="rollNo"
+          class="p-2 rounded-lg border border-gray-300 bg-white text-white"
+          placeholder="Enter roll number"
+        />
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label for="dob" class="font-semibold text-black">Date of Birth</label>
+        <p-calendar
+          id="dob"
+          formControlName="dob"
+          [showIcon]="true"
+          dateFormat="dd/mm/yy"
+          class="w-full"
+          [inputStyleClass]="
+            'bg-white text-white w-full p-2  rounded-lg border border-gray-300'
+          "
+          placeholder="Select date"
+        ></p-calendar>
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label for="batch" class="font-semibold text-black">Batch</label>
+        <select
+          id="batch"
+          (change)="onBatchChange($event)"
+          class="p-2 rounded-lg border border-gray-300 bg-white text-black"
+        >
+          <option value="">Select Batch</option>
+          <option
+            *ngFor="let batch of batches"
+            [value]="batch.id"
+            [selected]="selectedBatch?.id === batch.id"
+          >
+            {{ batch.batch }}
+          </option>
+        </select>
+      </div>
+
+      <div class="flex flex-col space-y-2">
+        <label for="courses" class="font-semibold text-black">Courses</label>
+        <select
+          id="courses"
+          multiple
+          (change)="onCoursesChange($event)"
+          class="p-2 rounded-lg border border-gray-300 bg-white text-black"
+        >
+          <option
+            *ngFor="let course of courses"
+            [value]="course.id"
+            [selected]="isSelectedCourse(course.id)"
+          >
+            {{ course.courseName }}
+          </option>
+        </select>
+      </div>
+
+      <div class="flex justify-end space-x-2 mt-6">
+        <a
+          pButton
+          type="button"
+          label="Cancel"
+          class="p-button-secondary bg-gray-500 text-white hover:bg-gray-600"
+          href="/dashboard/student-details"
+        ></a>
+        <button
+          pButton
+          type="submit"
+          label="Save"
+          [disabled]="!studentForm.valid"
+          class="p-button-primary w-10 bg-blue-500 text-white hover:bg-blue-600"
+        ></button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -9,10 +9,8 @@ import java.time.LocalDateTime;
 public class AbstractBaseEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
-
 
     public Long getId() {
         return id;
@@ -21,8 +19,5 @@ public class AbstractBaseEntity implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-
-
 
 }

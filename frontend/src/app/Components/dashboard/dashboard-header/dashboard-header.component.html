@@ -62,37 +62,6 @@
             >MarkMaster</span
           >
         </a>
-        <form action="#" class="hidden lg:block lg:pl-2" method="GET">
-          <label class="sr-only" for="topbar-search">Search</label>
-          <div class="relative mt-1 lg:w-96">
-            <div
-              class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
-            >
-              <svg
-                aria-hidden="true"
-                class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                fill="none"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                />
-              </svg>
-            </div>
-            <input
-              class="border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5 bg-main dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              id="topbar-search"
-              name="email"
-              placeholder="Search"
-              type="text"
-            />
-          </div>
-        </form>
       </div>
       <div class="flex relative items-center lg:order-2">
         <button
@@ -111,7 +80,7 @@
           />
         </button>
         <div
-          class="absolute z-50 my-4 w-56 right-0 top-5  text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-main dark:divide-gray-600"
+          class="absolute z-50 my-4 w-56 right-0 top-5 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-main dark:divide-gray-600"
           id="dropdown"
           [ngClass]="{ hidden: !dropdownVisible }"
         >
@@ -124,25 +93,7 @@
               class="block text-sm text-gray-500 truncate dark:text-gray-400"
             ></span>
           </div>
-          <ul
-            aria-labelledby="dropdown"
-            class="py-1 text-gray-500 dark:text-gray-400"
-          >
-            <li>
-              <a
-                class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
-                href="#"
-                >My profile</a
-              >
-            </li>
-            <li>
-              <a
-                class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
-                href="#"
-                >Account settings</a
-              >
-            </li>
-          </ul>
+
           <ul
             aria-labelledby="dropdown"
             class="py-1 text-gray-500 dark:text-gray-400"

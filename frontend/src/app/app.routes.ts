@@ -10,6 +10,11 @@ import { StudentDetailsPageComponent } from './Pages/student-details-page/studen
 import { DashboardLayoutComponent } from './Components/dashboard/dashboard-layout/dashboard-layout.component';
 import { SearchResultsComponent } from './Components/search-results/search-results.component';
 import { MarksComponentComponent } from './Components/dashboard/data-components/marks-component/marks-component.component';
+import { AuthGuard } from './Guard/auth.guard';
+import { AddStudentComponent } from './Components/add-student/add-student.component';
+import { AddMarksPageComponent } from './Pages/add-marks-page/add-marks-page.component';
+import { AddCoursePageComponent } from './add-course-page/add-course-page.component';
+import { AddBatchPageComponent } from './Pages/add-batch-page/add-batch-page.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +38,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardLayoutComponent,
+    canActivate: [AuthGuard],
 
     children: [
       {
@@ -43,6 +49,24 @@ export const routes: Routes = [
         path: 'marks-data',
         component: MarksComponentComponent,
       },
+      {
+        path: 'add-student',
+        component: AddStudentComponent,
+      },
+      {
+        path: 'edit-student/:id',
+        component: AddStudentComponent,
+      },
+      { path: 'add-marks', component: AddMarksPageComponent },
+      {
+        path: 'add-course',
+        component: AddCoursePageComponent,
+      },
+      {
+        path: 'add-batch',
+        component: AddBatchPageComponent,
+      },
+
       {
         path: '',
         component: DashboardComponent,
@@ -57,6 +81,7 @@ export const routes: Routes = [
   {
     path: 'search',
     component: SearchResultsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: '**',

@@ -41,7 +41,8 @@ public class StudentController {
     }
 
     @PostMapping("/")
-    ResponseEntity<Map<String, Object>> create(@RequestBody StudentCourseBatchDTO dto) throws HttpMessageNotReadableException {
+    ResponseEntity<Map<String, Object>> create(@RequestBody StudentCourseBatchDTO dto)
+            throws HttpMessageNotReadableException {
         Student studentNew = dto.getStudent();
         List<Course> course = dto.getCourses();
         Batch batch = dto.getBatches();
@@ -65,18 +66,40 @@ public class StudentController {
             student.setCourses(course);
             studentService.save(student);
             studentService.updateById(student, id);
-            return httpResponseUpdater.updateHttpResponse("Student with id:" + id + " has been updated successfully", HttpStatus.OK);
+            return httpResponseUpdater.updateHttpResponse("Student with id:" + id + " has been updated successfully",
+                    HttpStatus.OK);
         }
         return httpResponseUpdater.updateHttpResponse("Student with id:" + id + " not found", HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable Long id) {
+        // Find the student by ID
         Optional<Student> studentOptional = Optional.ofNullable(studentService.findById(id));
+
         if (studentOptional.isPresent()) {
+            Student student = studentOptional.get();
+
+            // Clear the relationship between the student and courses
+            if (student.getCourses() != null) {
+                // Clear the courses list from the student
+                student.getCourses().clear();  // Clear all associated courses
+
+                // Save the student after clearing the courses
+                studentService.save(student);
+            }
+
+            // Now delete the student
             studentService.deleteById(id);
-            return httpResponseUpdater.updateHttpResponse("Student with id:" + id + " has been deleted successfully", HttpStatus.OK);
+
+            return httpResponseUpdater.updateHttpResponse(
+                    "Student with id:" + id + " has been deleted successfully",
+                    HttpStatus.OK);
         }
-        return httpResponseUpdater.updateHttpResponse("Student with id:" + id + " not found", HttpStatus.NOT_FOUND);
+
+        return httpResponseUpdater.updateHttpResponse(
+                "Student with id:" + id + " not found",
+                HttpStatus.NOT_FOUND);
     }
+
 }
