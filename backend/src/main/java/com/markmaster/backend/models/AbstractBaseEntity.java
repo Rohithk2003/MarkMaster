@@ -10,7 +10,8 @@ public class AbstractBaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @SequenceGenerator(name = "student_mark_exam_seq", sequenceName = "student_mark_exam_seq", allocationSize = 1)
+        private Long id;
 
     public Long getId() {
         return id;

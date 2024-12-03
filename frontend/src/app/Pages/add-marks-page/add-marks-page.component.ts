@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Course, Student } from '../../Types/types';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-add-marks-page',
@@ -82,6 +83,7 @@ export class AddMarksPageComponent implements OnInit {
       exam: examData,
       mark: this.mark,
       course: courseData,
+      id: Math.floor(Math.random() * (1000000 - 10 + 1)) + 10,
     };
     const res = await this.baseService.apiClient.post(
       '/student/mark/',

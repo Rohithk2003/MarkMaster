@@ -10,8 +10,9 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class BatchServiceImplementation extends AbstractBaseRepositoryImpl<Batch, Long> implements BatchService {
-   private BatchRepo batchRepo;
-   public BatchServiceImplementation(BatchRepo batchRepo) {
-       super(batchRepo);
-   }
+    private BatchRepo batchRepo;
+
+    public BatchServiceImplementation(BatchRepo batchRepo) {
+        super(batchRepo);
+    }
 }

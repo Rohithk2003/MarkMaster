@@ -41,7 +41,7 @@ public class BatchController {
 
     @PostMapping("/")
     Batch create(@RequestBody Batch batch) throws HttpMessageNotReadableException {
-
+        batch.setId((long) (Math.random() * 1_000_000) + 1);
         batchService.save(batch);
         return batch;
     }
@@ -51,7 +51,8 @@ public class BatchController {
         Optional<Batch> batchOptional = Optional.ofNullable(batchService.findById(id));
         if (batchOptional.isPresent()) {
             batchService.updateById(batch, id);
-            return httpResponseUpdater.updateHttpResponse("Batch with id:" + id + " has been updated successfully", HttpStatus.OK);
+            return httpResponseUpdater.updateHttpResponse("Batch with id:" + id + " has been updated successfully",
+                    HttpStatus.OK);
         }
         return httpResponseUpdater.updateHttpResponse("Batch with id:" + id + " not found", HttpStatus.NOT_FOUND);
     }
@@ -61,7 +62,8 @@ public class BatchController {
         Optional<Batch> batchOptional = Optional.ofNullable(batchService.findById(id));
         if (batchOptional.isPresent()) {
             batchService.deleteById(id);
-            return httpResponseUpdater.updateHttpResponse("Batch with id:" + id + " has been deleted successfully", HttpStatus.OK);
+            return httpResponseUpdater.updateHttpResponse("Batch with id:" + id + " has been deleted successfully",
+                    HttpStatus.OK);
         }
         return httpResponseUpdater.updateHttpResponse("Batch with id:" + id + " not found", HttpStatus.NOT_FOUND);
     }

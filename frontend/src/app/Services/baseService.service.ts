@@ -31,7 +31,6 @@ export class BaseService {
   }
 
   private setupInterceptors() {
-    // Request Interceptor
     this.apiClient.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => {
         const token = this.authService.getAccessToken();

@@ -6,9 +6,7 @@ import org.yaml.snakeyaml.error.Mark;
 import java.util.Optional;
 
 @Entity
-@Table(name = "student_mark_exam", uniqueConstraints = {
-        @UniqueConstraint(columnNames = { "course_id", "student_id", "exam_id" })
-})
+@Table(name = "student_mark_exam")
 
 public class StudentMarkExam extends AbstractBaseEntity {
 
